@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connection = require('./database/Connection');
 const routerGames = require('./Routes/games');
+const routerUsers = require('./Routes/users');
 const app = express();
 const cors = require('cors');
 
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', routerGames);
+app.use('/', routerUsers);
 
 connection
   .authenticate()
