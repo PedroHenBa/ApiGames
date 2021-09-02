@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const connection = require('../database/Connection');
 
 const Games = connection.define(
@@ -21,5 +21,7 @@ const Games = connection.define(
     timestamps: false,
   },
 );
+
+Games.sync();
 
 module.exports = Games;
