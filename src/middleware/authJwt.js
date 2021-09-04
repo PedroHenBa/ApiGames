@@ -10,10 +10,11 @@ function authJwt(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (error, data) => {
       if (error) {
-        res.status = 400;
+        res.status(400);
         res.json({ error: 'Invalid Token' });
         return null;
       }
+      res.status(200);
       req.token = token;
       req.loggedUsser = { id: data.id, email: data.email };
       next();
