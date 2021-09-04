@@ -24,4 +24,4 @@ class AuthJwt {
   }
 }
 
-module.exports = new AuthJwt();
+export default AuthJwt;
