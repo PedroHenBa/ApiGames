@@ -8,18 +8,14 @@ class App {
 
   constructor() {
     this.app = express();
-    this.initializeCors();
-    this.initializeMiddlewares();
-    // this.initializeRoutes();
+    this.initilizeConfig();
     this.initializeConnection();
   }
 
-  private initializeMiddlewares(): void {
+  private initilizeConfig(): void {
+    this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(express.json());
     this.app.use(bodyParser.json());
-  }
-
-  private initializeCors(): void {
     this.app.use(cors());
   }
 
