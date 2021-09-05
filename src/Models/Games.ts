@@ -9,7 +9,7 @@ interface GameInstance
   extends Model<GameAttributes, GameCreationAttributes>,
     GameAttributes {}
 
-const Games = connection.define<GameInstance>(
+export const Games = connection.define<GameInstance>(
   'games',
   {
     id: {
@@ -44,5 +44,3 @@ const Games = connection.define<GameInstance>(
 );
 
 Games.sync();
-
-module.exports = Games;

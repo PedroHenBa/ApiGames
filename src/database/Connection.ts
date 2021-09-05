@@ -8,7 +8,6 @@ class Connection {
 
   private constructor() {
     const { NAME_DATABASE, DATABASE_USER, PASSWORD, HOST } = process.env;
-    console.log(NAME_DATABASE, DATABASE_USER, PASSWORD, HOST);
 
     this.connection = new Sequelize(NAME_DATABASE, DATABASE_USER, PASSWORD, {
       host: HOST,

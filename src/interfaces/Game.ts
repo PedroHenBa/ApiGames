@@ -3,6 +3,6 @@ export interface GameAttributes {
   title: string;
   year: number;
   price: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

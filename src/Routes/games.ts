@@ -1,10 +1,11 @@
 import { Router } from 'express';
-const gamesController = require('../Controller/gamesController');
+import { GamesController } from '../Controller/gamesController';
 import AuthJwt from '../middleware/authJwt';
 
 class GamesRoutes {
   public router: Router;
   public AuthJWT: AuthJwt = new AuthJwt();
+  public gamesController: GamesController = new GamesController();
 
   constructor() {
     this.router = Router();
@@ -12,15 +13,19 @@ class GamesRoutes {
   }
 
   routes(): void {
-    this.router.get('/games', gamesController.get_games);
-    this.router.get('/game/:id', gamesController.get_game_id);
-    this.router.post('/game', this.AuthJWT.authorizeJWT, gamesController.post_game);
+    this.router.get('/games', this.gamesController.getGames);
+    this.router.get('/game/:id', this.gamesController.getGame);
+    this.router.post('/game', this.AuthJWT.authorizeJWT, this.gamesController.createGame);
     this.router.delete(
       '/game/:id',
       this.AuthJWT.authorizeJWT,
-      gamesController.delete_game,
+      this.gamesController.deleteGame,
     );
-    this.router.put('/game/:id', this.AuthJWT.authorizeJWT, gamesController.put_game);
+    this.router.put(
+      '/game/:id',
+      this.AuthJWT.authorizeJWT,
+      this.gamesController.updateGame,
+    );
   }
 }
 

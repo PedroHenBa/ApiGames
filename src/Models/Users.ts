@@ -10,7 +10,7 @@ interface UserInstance
   extends Model<UserAttributes, UserCreationAttributes>,
     UserAttributes {}
 
-const Users = connection.define<UserInstance>('users', {
+export const Users = connection.define<UserInstance>('users', {
   id: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
@@ -41,5 +41,3 @@ const Users = connection.define<UserInstance>('users', {
 });
 
 Users.sync();
-
-module.exports = Users;

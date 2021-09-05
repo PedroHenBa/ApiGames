@@ -1,8 +1,9 @@
 import { Router } from 'express';
-const usersController = require('../Controller/usersController');
+import { UsersControllers } from '../Controller/usersController';
 
 class UsersRoutes {
   public router: Router;
+  public usersControllers: UsersControllers = new UsersControllers();
 
   constructor() {
     this.router = Router();
@@ -10,7 +11,7 @@ class UsersRoutes {
   }
 
   routes(): void {
-    this.router.post('/user/auth', usersController.user_auth);
+    this.router.post('/user/auth', this.usersControllers.userAuth);
   }
 }
 
