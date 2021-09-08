@@ -30,4 +30,14 @@ export class UsersControllers {
       res.status(401).json('password invalid');
     }
   }
+
+  async userCreate(req: Request, res: Response): Promise<void> {
+    const { name, email, password }: UserAttributes = req.body;
+    const result = Users.create({ name, email, password });
+    if (!result) {
+      res.sendStatus(500);
+    } else {
+      res.status(200).json({ status: 'user created' });
+    }
+  }
 }

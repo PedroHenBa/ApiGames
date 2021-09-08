@@ -12,6 +12,7 @@ class UsersRoutes {
 
   routes(): void {
     this.router.post('/user/auth', this.usersControllers.userAuth);
+    this.router.post('/user/register', this.usersControllers.userCreate);
   }
 }
 
